@@ -6,24 +6,24 @@ module.exports = function(grunt) {
     compass: {
       build: {
         options: {
-          specify: ["wp-content/themes/ryu/assets/scss/style.scss"],
+          specify: ["public/wp-content/themes/ryu/assets/scss/style.scss"],
           outputStyle: "compressed",
           noLineComments: false,
-          sassDir: "wp-content/themes/ryu/assets/scss",
-          cssDir: "wp-content/themes/ryu",     
-        },
-      },
+          sassDir: "public/wp-content/themes/ryu/assets/scss",
+          cssDir: "public/wp-content/themes/ryu" 
+        }
+      }
     },
 
     watch: {
       sass: {
-        files: ["wp-content/themes/ryu/assets/scss/partials/*.scss"],
+        files: ["public/wp-content/themes/ryu/assets/scss/partials/*.scss"],
         tasks: ["compass:build"],
-      },
-      livereload: {
-        options: {livereload: true},
-        files: ['wp-content/themes/ryu/style.css']
-      },
+        options: {
+          livereload: true,
+          host: "moneyball:8888"
+        }
+      }
     },
 
     rsync: {
@@ -37,13 +37,13 @@ module.exports = function(grunt) {
           src: "./",
           dest: "/home/seattlek/public_html/",
           host: "seattlek@seattlekrakenNHL.com"
-        },
-      },
+        }
+      }
     }
   });
 
   grunt.registerTask("default", "Build tasks for production.", function() {
-    grunt.task.run("compass:build", "watch:sass", "watch:livereload");
+    grunt.task.run("compass:build", "watch:sass");
   });
 
   grunt.registerTask("production", "Deploy to production environment.", function() {
