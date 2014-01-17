@@ -6,18 +6,18 @@ module.exports = function(grunt) {
     compass: {
       build: {
         options: {
-          specify: ["public/wp-content/themes/ryu/assets/scss/style.scss"],
+          specify: ["wp-content/themes/ryu/assets/scss/style.scss"],
           outputStyle: "compressed",
           noLineComments: false,
-          sassDir: "public/wp-content/themes/ryu/assets/scss",
-          cssDir: "public/wp-content/themes/ryu" 
+          sassDir: "wp-content/themes/ryu/assets/scss",
+          cssDir: "wp-content/themes/ryu" 
         }
       }
     },
 
     watch: {
       sass: {
-        files: ["public/wp-content/themes/ryu/assets/scss/partials/*.scss"],
+        files: ["wp-content/themes/ryu/assets/scss/partials/*.scss"],
         tasks: ["compass:build"],
         options: {
           livereload: true,
